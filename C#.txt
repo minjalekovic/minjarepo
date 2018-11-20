@@ -1,0 +1,85 @@
+I zadatak
+
+            int x;
+            for(x = 1; x < 100; x++)
+            {
+                if (x % 3 == 0 && x % 5 == 0)
+                {
+                    Console.WriteLine("{0} Cica Maca", x);
+                }
+                else if (x % 3 == 0)
+                {
+                    Console.WriteLine("{0} Cica", x);
+                }
+                else if (x % 5 == 0)
+                {
+                    Console.WriteLine("{0} Maca", x);
+                }
+
+            }
+            Console.ReadKey();
+
+---------------------------------------------------------------------------------------------------------------------------
+II Zadatak
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static System.Math;
+
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Unesi neki broj:");
+            int x = Convert.ToInt32(Console.ReadLine());
+            if (x % 2 == 0)
+            {
+                Console.WriteLine("Broj {0} je paran i kvadrat tog broja je {1}", x, Math.Pow(x,2));
+            }
+            else
+            {
+                Console.WriteLine("Broj {0} je neparan i kub tog broja je {1}", x, Math.Pow(x,3));
+            }
+            Console.ReadKey();
+        }
+    }
+}
+
+--------------------------------------------------------------------------------------------------------------------------
+
+III Zadatak
+
+            Console.WriteLine("Unesi prvi broj:");
+            int x = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Unesi drugi broj:");
+            int y = Convert.ToInt32(Console.ReadLine());
+
+            if (x % 2 == 0)
+            {
+                if (y % 2 == 0)
+                {
+                    int p = x * y;
+                    Console.WriteLine("Oba broja su parna i njihov proizvod je: {0}", p);
+                }
+                else
+                {
+                    int r = x - y;
+                    Console.WriteLine("Broj {0} je paran, a {1} je neparan i njihova razlika je: {2}", x, y, r);
+                }
+            }
+            else
+            {
+                if(y % 2 != 0)
+                {
+                    float k = x / y;
+                    Console.WriteLine("Oba broja su neparna i njihov kolicnik je: {0}", k);
+                }
+            }
+            Console.ReadKey();
