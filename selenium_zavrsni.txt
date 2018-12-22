@@ -1,0 +1,138 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support;
+using OpenQA.Selenium.Support.UI;
+using System.IO;
+
+namespace Cas27Selenium
+{
+    class testcase01
+    {
+
+        IWebDriver driver;
+               
+        [SetUp]
+
+        public void StartBrowser()
+        {        
+            driver = new ChromeDriver();
+        }
+
+        public void GoToUrl(string url)
+        {
+            this.driver.Url = url;
+        }
+
+
+        public void Sleep(int seconds)
+        {
+            Thread.Sleep(TimeSpan.FromSeconds(seconds));
+        }
+
+
+        public IWebElement WaitForElement(By by, int timeoutSeconds)
+        {
+            if (timeoutSeconds > 0)
+            {
+                var wait = new WebDriverWait(driver, 
+TimeSpan.FromSeconds(timeoutSeconds));
+                wait.Until(drv => drv.FindElement(by));
+            }
+            return driver.FindElement(by);
+        }
+
+
+
+
+        [Test]
+
+        public void RegisterTC_2()
+        {
+            GoToUrl("http://test.qa.rs/");
+            Sleep(4);
+
+            IWebElement create = 
+WaitForElement(By.XPath("//a[@href='/new']"), 3);
+            create.Click();
+            Sleep(3);
+
+            IWebElement fName = 
+WaitForElement(By.XPath("//input[@name='ime']"), 3);
+            fName.SendKeys("QA");
+
+            IWebElement lName = 
+WaitForElement(By.XPath("//input[@name='prezime']"), 3);
+            lName.SendKeys("QA");
+
+            IWebElement uName = 
+WaitForElement(By.XPath("//input[@name='korisnicko']"), 3);
+            uName.SendKeys("qaqaqa");
+
+            IWebElement email = 
+WaitForElement(By.XPath("//input[@name='email']"), 3);
+            email.SendKeys("qa@qa.com");
+
+            IWebElement tel = 
+WaitForElement(By.XPath("//input[@type='tel']"), 3);
+            tel.SendKeys("011258369");
+
+            IWebElement country = 
+WaitForElement(By.XPath("//select[@name='zemlja']/option[@value='srb']"), 
+3);
+            country.Click();
+
+            IWebElement gender = 
+WaitForElement(By.XPath("//input[@value='z']"), 3);
+            gender.Click();
+
+            IWebElement newsletter = 
+WaitForElement(By.XPath("//input[@name='obavestenja']"), 3);
+            newsletter.Click();
+
+            IWebElement promotion = 
+WaitForElement(By.XPath("//input[@name='promocije']"), 3);
+            promotion.Click();
+
+            IWebElement registration = 
+WaitForElement(By.XPath("//input[@type='submit']"), 3);
+            registration.Click();
+
+            IWebElement note = 
+WaitForElement(By.XPath("//div[@class='alert alert-success']"), 3);
+
+            string success = note.GetAttribute("value");
+
+            //string firstname = Convert.ToString(fName);
+            //string lastname = Convert.ToString(lName);
+
+            
+System.IO.File.AppendAllText("C:\\Users\\Zdravko\\Desktop\\selenium.txt", 
+success + Environment.NewLine);
+
+            IWebElement table = driver.FindElement(By.XPath("//table"));
+
+            IWebElement tableuser = 
+table.FindElement(By.XPath("//td[contains(text(), 'QA')]"));
+
+            Sleep(6);
+        }
+
+        [TearDown]
+
+        public void CloseBrowser()
+
+        {
+
+            driver.Close();
+
+        }
+    }
+}
+
