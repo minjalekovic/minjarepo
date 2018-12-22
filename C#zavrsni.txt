@@ -1,0 +1,83 @@
+
+1. Zadatak
+
+---------------------------------------------------------------------------
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static System.Math;
+
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter the Year");
+            int year = Convert.ToInt32(Console.ReadLine());
+            if((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
+            {
+                Console.WriteLine("{0} is Leap Year.", year);
+            }
+            else
+            {
+                Console.WriteLine("{0} is not Leap Year.", year);
+            }
+            Console.ReadKey();
+        }
+    }
+}
+
+
+---------------------------------------------------------------------------
+
+2. Zadatak
+
+---------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static System.Math;
+
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            int num, i, j;
+            do
+            {
+                Console.WriteLine("Enter number between 6 and 10:");
+                num = Convert.ToInt32(Console.ReadLine());
+
+            } while (num < 6 || num > 10);
+
+            for(i = 0; i <= num; i ++)
+            {
+                for(j = 0; j < i; j++)
+                {
+                    Console.WriteLine(i);
+                }
+                   
+            }
+            Console.ReadLine();
+        
+
+        }
+    }
+}
+
+
+---------------------------------------------------------------------------
